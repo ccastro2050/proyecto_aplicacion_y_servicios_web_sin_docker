@@ -33,7 +33,7 @@
 ## Artículo 3 — Arquitectura en capas con interfaces, desde el día 1
 
 ```
-HTTP → Controller (valida el body contra el MODELO del verbo → 422)
+HTTP → Controller (valida el body contra la PETICIÓN del verbo → 422)
      → IServicioProducto      (interfaz — reglas de negocio)
      → IRepositorioProducto   (interfaz — el servicio no sabe qué motor hay)
      → RepositorioProducto<Motor>  (ADO.NET, SQL parametrizado)
@@ -89,7 +89,7 @@ PATCH (parcial → 200 con el mismo body).
 |---|---|
 | Puertos del proyecto | API facturas **8032** (fijado en launchSettings; reservados: front 8030, API genérica 8031) · la BD no usa puerto: LocalDB se conecta por instancia `(localdb)\MSSQLLocalDB` |
 | Rutas | `/` (diagnóstico) · `/swagger` (documentación interactiva) · `/api/producto` (v1) |
-| Nombres | PascalCase en español; interfaces con prefijo `I`; carpetas `Controllers/ Modelos/ Servicios/ Repositorios/ Excepciones/ pruebas/` |
+| Nombres | PascalCase en español; interfaces con prefijo `I`; carpetas `Controllers/ Modelos/ Peticiones/ Servicios/ Repositorios/ Excepciones/ pruebas/` (`Modelos/` = clases entidad; `Peticiones/` = el body de cada verbo) |
 | Sobre de respuesta | Lecturas: `{tabla, limite, total, datos}` · Errores: `{estado, mensaje, detalle}` (+ `errores:[…]` en el 422) |
-| Errores | Modelo inválido → **422** · `ArgumentException` → **400** · `NoEncontradoExcepcion` → **404** · `SqlException` y demás → **500** |
+| Errores | Body inválido (la petición) → **422** · `ArgumentException` → **400** · `NoEncontradoExcepcion` → **404** · `SqlException` y demás → **500** |
 | Credenciales | BD sin claves: **autenticación de Windows** (Trusted_Connection) · base `bdfacturas_sqlserver_local` |

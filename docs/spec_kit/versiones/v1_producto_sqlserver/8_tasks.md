@@ -14,7 +14,7 @@
       LocalDB; ver [3_plan.md](3_plan.md) §4.6).
 - [ ] Crear la BD: `.\db\crear_bd.ps1` (arranca LocalDB, crea
       `bdfacturas_sqlserver_local` y ejecuta el script — idempotente).
-- [ ] Crear `api_facturas/` con subcarpetas `Modelos/`, `Controllers/`,
+- [ ] Crear `api_facturas/` con subcarpetas `Modelos/`, `Peticiones/`, `Controllers/`,
       `Servicios/`, `Repositorios/`, `Excepciones/`, `Properties/` y
       `pruebas/`.
 
@@ -37,10 +37,10 @@ da **8** (o mírelo en Visual Studio: *SQL Server Object Explorer* →
 
 **Verificar:** `dotnet build` compila sin errores.
 
-## Fase 2 — Los modelos por verbo (la frontera de entrada) y la excepción
-- [ ] `Modelos/ProductoCrear.cs` (POST: todo obligatorio, con código),
-      `Modelos/ProductoReemplazo.cs` (PUT: todo obligatorio, sin código) y
-      `Modelos/ProductoActualizar.cs` (PATCH: todo opcional) — con las
+## Fase 2 — Las peticiones por verbo (la frontera de entrada) y la excepción
+- [ ] `Peticiones/ProductoCrear.cs` (POST: todo obligatorio, con código),
+      `Peticiones/ProductoReemplazo.cs` (PUT: todo obligatorio, sin código) y
+      `Peticiones/ProductoActualizar.cs` (PATCH: todo opcional) — con las
       anotaciones y mensajes de [3_plan.md](3_plan.md) §4.2.
 - [ ] `Excepciones/NoEncontradoExcepcion.cs`: la excepción que el
       controller traducirá a 404.

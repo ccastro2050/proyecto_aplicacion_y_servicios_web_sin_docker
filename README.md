@@ -124,8 +124,9 @@ proyecto_aplicacion_y_servicios_web_sin_docker/
 │   ├── appsettings.json         # Cadena de conexión a LocalDB (autenticación Windows)
 │   ├── Properties/launchSettings.json  # Fija el puerto 8032 para dotnet run/watch
 │   ├── Controllers/             # Capa 1 — HTTP: atributos de verbo y try/catch → códigos
-│   ├── Modelos/                 # La entidad Producto + un modelo por verbo (la
-│   │                            #   frontera: sus anotaciones validan el body → 422)
+│   ├── Modelos/                 # Los MODELOS = las clases ENTIDAD (v1: Producto)
+│   ├── Peticiones/              # Los body por verbo (Crear/Reemplazo/Actualizar):
+│   │                            #   sus anotaciones validan la entrada → 422
 │   ├── Servicios/               # Capa 2 — negocio: interfaz + reglas
 │   ├── Repositorios/            # Capa 3 — datos: interfaz + ADO.NET/SQL Server
 │   ├── Excepciones/             # NoEncontradoExcepcion (el servicio la lanza → 404)
