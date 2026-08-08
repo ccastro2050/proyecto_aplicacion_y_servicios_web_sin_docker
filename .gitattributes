@@ -1,0 +1,5 @@
+# Normalizar finales de línea: en el repo siempre LF
+* text=auto
+
+# (Esta variante no usa scripts de bash; los .ps1 van con la
+# normalización estándar de texto.)

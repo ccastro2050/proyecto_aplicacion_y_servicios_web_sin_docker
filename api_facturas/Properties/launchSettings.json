@@ -1,0 +1,12 @@
+{
+  "_comentario": "Perfil de arranque para dotnet run / dotnet watch: fija el puerto de la API en 8032 (la convención del curso).",
+  "profiles": {
+    "ApiFacturas": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:8032",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
