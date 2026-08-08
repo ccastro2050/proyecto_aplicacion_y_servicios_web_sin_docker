@@ -138,6 +138,7 @@ proyecto_aplicacion_y_servicios_web_sin_docker/
 │   ├── GUIA_IA.md               # Cómo reconstruir la versión desde 0 con ayuda de una IA
 │   ├── FLUJO_DE_UNA_PETICION.md # Dónde "está" el GET, dónde se captura el POST
 │   ├── ENTORNO_LOCAL.md         # LocalDB y dotnet watch: el "Docker" de esta variante
+│   ├── TUTORIAL_SSMS.md         # Administrar la BD con SQL Server Management Studio
 │   ├── PARADIGMA_POO.md         # Material conceptual: POO, SOLID+capas, ACID y SDD
 │   ├── SOLID_Y_CAPAS.md         #   (un .md por tema)
 │   ├── PRINCIPIOS_ACID.md       #
