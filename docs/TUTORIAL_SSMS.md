@@ -9,7 +9,7 @@
 
 ---
 
-## Paso 1 — Instalar SSMS
+## Paso 1 — Instalar y abrir SSMS
 
 SSMS es una aplicación de escritorio gratuita de Microsoft (no viene con
 Visual Studio: se instala aparte). Descárguela de la página oficial:
@@ -17,7 +17,20 @@ Visual Studio: se instala aparte). Descárguela de la página oficial:
 **https://aka.ms/ssms**
 
 Instalación siguiente-siguiente; no pide configurar nada. Al abrirla,
-muestra de una vez la ventana **Connect to Server** (conectar al servidor).
+SSMS muestra de una vez el diálogo **Conectar** (en las versiones
+recientes tiene el aspecto de la captura; en versiones anteriores la
+ventana se llama *Connect to Server* — los campos son los mismos):
+
+![El diálogo Conectar de SSMS al abrir](img_ssms/paso01_conectar.png)
+
+Para leer en esta pantalla:
+
+- La pestaña **History** lista las conexiones recientes: con el uso, la
+  del proyecto quedará ahí para reconectar con un clic.
+- **Connection Properties** es donde se llena todo lo del paso 2:
+  *Server Name*, *Authentication* y el check **Trust Server Certificate**.
+- Detrás quedó la ventana principal con el **Explorador de objetos**
+  vacío — se llena al conectar.
 
 > 💡 Si en su sala no se puede instalar SSMS, Visual Studio trae un
 > explorador equivalente en miniatura: **View → SQL Server Object
@@ -30,16 +43,15 @@ muestra de una vez la ventana **Connect to Server** (conectar al servidor).
 La BD del proyecto vive en **LocalDB**, la edición de desarrollo de SQL
 Server que viene con Visual Studio. No tiene puerto ni contraseña: se
 llama por su **nombre de instancia** y entra con su usuario de Windows.
-En la ventana *Connect to Server* llene así:
+En el diálogo **Conectar** (pestaña *Connection Properties*) llene así:
 
 | Campo | Valor |
 |---|---|
-| Server type | `Database Engine` |
-| **Server name** | `(localdb)\MSSQLLocalDB` |
-| Authentication | `Windows Authentication` |
+| **Server Name** | `(localdb)\MSSQLLocalDB` |
+| Authentication | `Autenticación de Windows` (*Windows Authentication*) |
 
-Clic en **Connect**: se abre el **Object Explorer** (explorador de
-objetos) con la instancia conectada.
+Clic en **Conectar**: el **Explorador de objetos** (panel izquierdo) se
+llena con la instancia conectada.
 
 Si da error de que no encuentra el servidor, la instancia está dormida o
 la BD nunca se creó. Desde la raíz del repositorio:
@@ -61,10 +73,10 @@ En el Object Explorer expanda: **Databases →
   el esquema por defecto de SQL Server). Expanda `dbo.producto`:
   - **Columns**: las 4 columnas con sus tipos (`codigo` con llave dorada
     = llave primaria).
-  - **Keys / Constraints**: la PK y los CHECK (las reglas que la BD
-    misma hace cumplir).
-  - **Triggers**: los disparadores de facturación — ya están escritos,
-    esperando a las versiones siguientes del curso.
+  - **Claves / Restricciones**: la llave primaria (en el paso 5 se verá
+    con precisión QUÉ reglas hace cumplir esta BD y cuáles no).
+  - **Desencadenadores**: los triggers de facturación — ya están
+    escritos, esperando a las versiones siguientes del curso.
 - **Programmability → Stored Procedures** — los procedimientos
   almacenados de facturación (misma historia: infraestructura dada
   desde la v1).
@@ -112,12 +124,33 @@ VALUES ('PR999', 'Producto de prueba SSMS', 5, 9999);
 DELETE FROM producto WHERE codigo = 'PR999';
 ```
 
-Pruebe también romper una regla a propósito — la BD es la última
-muralla y se defiende sola:
+Ahora intente algo que DEBERÍA estar prohibido — un stock negativo:
 
 ```sql
-UPDATE producto SET stock = -5 WHERE codigo = 'PR001';
--- Error: el CHECK de stock no permite negativos
+UPDATE producto SET stock = -5 WHERE codigo = 'PR999';
+```
+
+**"(1 fila afectada)" — ¡la BD lo ACEPTA!** Y esa es la lección más
+importante de este paso:
+
+- La tabla `producto` solo tiene restricciones **estructurales**: la
+  llave primaria, los tipos y los `NOT NULL`. **No hay CHECK de
+  rangos** (véalo usted mismo en `db/bdfacturas.sql`).
+- ¿Quién prohíbe entonces el stock negativo? **La API**: la petición
+  del verbo declara `[Range(0, …)]`, así que por la puerta de la API un
+  stock `-5` muere en **422** sin tocar la BD (pruébelo: el mismo
+  cambio vía PATCH es rechazado).
+- Por SQL directo usted entra POR DETRÁS de esa muralla. Por eso en el
+  flujo del curso los datos entran por la API — y por eso conectarse
+  como administrador exige respeto.
+
+La regla que la BD SÍ hace cumplir aquí es la **llave primaria** —
+pruebe a insertar un código repetido:
+
+```sql
+INSERT INTO producto (codigo, nombre, stock, valorunitario)
+VALUES ('PR999', 'Duplicado', 1, 1);
+-- Error 2627: Violation of PRIMARY KEY constraint 'pk_producto'
 ```
 
 ---
