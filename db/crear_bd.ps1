@@ -56,6 +56,9 @@ sqlcmd -S $instancia -E -Q "CREATE DATABASE [$NombreBd]"
 
 Write-Host "[crear_bd] Ejecutando bdfacturas.sql (12 tablas, triggers, datos)..."
 #   -d = conectarse A esa base de datos;  -i = ejecutar el archivo
-sqlcmd -S $instancia -E -d $NombreBd -i $script
+#   -f 65001 = leer el archivo como UTF-8. SIN esto, sqlcmd lo lee
+#   con la codificación ANSI de Windows y las tildes y eñes de los
+#   datos quedan GUARDADAS dañadas ("María" se vuelve "MarÃ­a").
+sqlcmd -S $instancia -E -d $NombreBd -i $script -f 65001
 
 Write-Host "[crear_bd] Listo: $NombreBd creada con sus 12 tablas y datos de ejemplo."
