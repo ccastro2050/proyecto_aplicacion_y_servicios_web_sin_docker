@@ -141,7 +141,7 @@ proyecto_aplicacion_y_servicios_web_sin_docker/
 │   ├── TUTORIAL_SSMS.md         # Administrar la BD con SQL Server Management Studio
 │   ├── TUTORIAL_VSCODE_MSSQL.md # Administrar la BD desde VS Code (extensión mssql)
 │   ├── PARADIGMA_POO.md         # Material conceptual: POO, SOLID+capas, ACID y SDD
-│   ├── SOLID_Y_CAPAS.md         #   (un .md por tema)
+│   ├── SOLID_CAPAS_PATRONES.md         #   (un .md por tema)
 │   ├── PRINCIPIOS_ACID.md       #
 │   └── SDD_SPECKIT.md           #
 │
@@ -192,7 +192,7 @@ de aceptación (commit + tag). Mapa completo:
 | [El entorno local](docs/ENTORNO_LOCAL.md) | LocalDB (qué es, dónde viven los datos, el reset) y dotnet watch |
 | [SDD y Spec Kit](docs/SDD_SPECKIT.md) | La metodología: la spec manda sobre el código |
 | [El paradigma P.O.O. en C#](docs/PARADIGMA_POO.md) | Qué es un paradigma, los 4 pilares, y las propiedades e interfaces de C# |
-| [SOLID y programación por capas](docs/SOLID_Y_CAPAS.md) | Los 5 principios y las capas — y en qué versión se demuestra cada uno |
+| [SOLID, capas y patrones de diseño](docs/SOLID_CAPAS_PATRONES.md) | Los 5 principios y las capas — y en qué versión se demuestra cada uno |
 | [Principios ACID](docs/PRINCIPIOS_ACID.md) | Las 4 garantías transaccionales, por qué una facturación las exige |
 
 ---
