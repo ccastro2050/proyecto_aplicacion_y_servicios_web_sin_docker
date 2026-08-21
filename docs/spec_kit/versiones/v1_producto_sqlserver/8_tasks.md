@@ -51,7 +51,7 @@ da **8** (o mírelo en Visual Studio: *SQL Server Object Explorer* →
 - [ ] `Repositorios/IRepositorioProducto.cs`: interface con los 5 métodos
       async ([3_plan.md](3_plan.md) §4.1).
 - [ ] `Servicios/IServicioProducto.cs`: interface del servicio.
-- [ ] `Repositorios/RepositorioProductoSqlServer.cs`: ADO.NET con los SQL
+- [ ] `Repositorios/RepositorioProductoSqlServer.cs`: Dapper (`QueryAsync`/`ExecuteAsync`) con los SQL
       de [3_plan.md](3_plan.md) §4.4 — `TOP (@limite)`, parámetros `@`,
       conexión por operación con `await using`, y el UPDATE con SET
       dinámico de lista blanca.

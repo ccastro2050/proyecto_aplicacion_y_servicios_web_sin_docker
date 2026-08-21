@@ -119,7 +119,7 @@ proyecto_aplicacion_y_servicios_web_sin_docker/
 │                                #   cómo hacer el backup y cómo restaurarlo
 │
 ├── api_facturas/                # LA API DE LA v1 — C#/ASP.NET Core (puerto 8032)
-│   ├── ApiFacturas.csproj       # El proyecto .NET (paquetes: SqlClient y Swashbuckle)
+│   ├── ApiFacturas.csproj       # El proyecto .NET (paquetes: SqlClient, Dapper y Swashbuckle)
 │   ├── Program.cs               # Punto de entrada: ENSAMBLADOR (DI) + 422 + rutas
 │   ├── appsettings.json         # Cadena de conexión a LocalDB (autenticación Windows)
 │   ├── Properties/launchSettings.json  # Fija el puerto 8032 para dotnet run/watch
