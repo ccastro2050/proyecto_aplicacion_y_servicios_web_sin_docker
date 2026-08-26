@@ -89,7 +89,7 @@ PATCH (parcial → 200 con el mismo body).
 
 | Cosa | Convención |
 |---|---|
-| Puertos del proyecto | API facturas **8032** (fijado en launchSettings; reservados: front 8030, API genérica 8031) · la BD no usa puerto: LocalDB se conecta por instancia `(localdb)\MSSQLLocalDB` |
+| Puertos del proyecto | API facturas **8032** (fijado en launchSettings; reservados: front 8030) · la BD no usa puerto: LocalDB se conecta por instancia `(localdb)\MSSQLLocalDB` |
 | Rutas | `/` (diagnóstico) · `/swagger` (documentación interactiva) · `/api/producto` (v1) |
 | Nombres | PascalCase en español; interfaces con prefijo `I`; carpetas `Controllers/ Modelos/ Peticiones/ Servicios/ Repositorios/ Excepciones/ pruebas/` (`Modelos/` = clases entidad; `Peticiones/` = el body de cada verbo) |
 | Sobre de respuesta | Lecturas: `{tabla, limite, total, datos}` · Errores: `{estado, mensaje, detalle}` (+ `errores:[…]` en el 422) |
