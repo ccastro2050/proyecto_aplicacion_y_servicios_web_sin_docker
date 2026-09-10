@@ -83,7 +83,7 @@ es **reconstruirla usted mismo, en una carpeta propia (fuera del clon)**,
 siguiendo las especificaciones — con o sin ayuda de IA:
 
 > 🤖 ¿Va a trabajar con IA? Siga la **[Guía para construir la versión con
-> IA](docs/GUIA_IA.md)** — cubre los dos caminos con su prompt exacto listo
+> IA](docs/spec_kit/versiones/v1_producto_sqlserver/GUIA_IA1.md)** — cubre los dos caminos con su prompt exacto listo
 > para copiar: **chat web** (Gemini, DeepSeek, ChatGPT: qué archivos
 > subirle) e **IDE agéntico** (Antigravity, Cursor, Claude Code: cómo
 > supervisar al agente).
@@ -135,7 +135,6 @@ proyecto_aplicacion_y_servicios_web_sin_docker/
 ├── docs/
 │   ├── spec_kit/                # LAS ESPECIFICACIONES: constitución permanente +
 │   │                            #   una carpeta de specs por versión (v1, v2, …)
-│   ├── GUIA_IA.md               # Cómo reconstruir la versión desde 0 con ayuda de una IA
 │   ├── FLUJO_DE_UNA_PETICION.md # Dónde "está" el GET, dónde se captura el POST
 │   ├── ENTORNO_LOCAL.md         # LocalDB y dotnet watch: el "Docker" de esta variante
 │   ├── TUTORIAL_SSMS.md         # Administrar la BD con SQL Server Management Studio
@@ -181,6 +180,8 @@ de aceptación (commit + tag). Mapa completo:
 | [6_contracts.md](docs/spec_kit/versiones/v1_producto_sqlserver/6_contracts.md) | Los 7 endpoints con formatos exactos |
 | [7_quickstart.md](docs/spec_kit/versiones/v1_producto_sqlserver/7_quickstart.md) | Arranque y smoke test |
 | [8_tasks.md](docs/spec_kit/versiones/v1_producto_sqlserver/8_tasks.md) | Orden de construcción por fases verificables |
+| [9_checklist.md](docs/spec_kit/versiones/v1_producto_sqlserver/9_checklist.md) | **La compuerta 3**: revisa la ESPECIFICACIÓN, y se firma ANTES de programar |
+| [GUIA_IA1.md](docs/spec_kit/versiones/v1_producto_sqlserver/GUIA_IA1.md) | Cómo reconstruir la versión desde cero con ayuda de una IA |
 
 ## 5. Material conceptual del curso
 
